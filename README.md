@@ -1,37 +1,35 @@
-## Welcome to GitHub Pages
+# R and Statistics: The Basics
 
-You can use the [editor on GitHub](https://github.com/MNL-A/r-statistics-basics/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+## Introduction
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Getting Started
+
+## In-house tutorials/notes
+
+| Link | Description |
+| ----------- | ----------- |
+|[R 101 Part 1](/R101_Part1.html) | Getting Started with R |
+| [Synapse Quantification & Stats Tutorial](/SynapseQuant_Statistics.html) | Basic R tutorial for graphing and statistics |
+| [R Resources](/R_Resources.html) | Compiled Resources for Getting Started with R|
+
+
+## Below are some additional resources that I've found particularly useful
+
+### Linux Command Line
+
+[Cheatsheet 1](https://phoenixnap.com/kb/linux-commands-cheat-sheet#linux-commands-cheat-sheet-pdf)
+
+[Cheatsheet 2](https://www.guru99.com/linux-commands-cheat-sheet.html)
+
+### R Studio
+
+[Cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
 
 ### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+[Offical Markdown Guide](https://www.markdownguide.org/basic-syntax/)
 
-```markdown
-Syntax highlighted code block
+#### 
+Reach out to Jillybeth if you have suggestions, questions or comments related to the information provided above.
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/MNL-A/r-statistics-basics/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
