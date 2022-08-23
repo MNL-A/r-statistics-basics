@@ -1,0 +1,671 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>RStudio Basics </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="17640e01-4039-4a8c-be3b-9291bab505cb" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">📊</span></div><h1 class="page-title">RStudio Basics </h1></header><div class="page-body"><h1 id="2beac5a8-c8df-41ab-b12f-7d971f17896d" class="">Purpose</h1><h3 id="b36e5949-deb7-4f9e-8f57-1855c4cdf919" class="">What is R?</h3><p id="3f1e292c-89ba-4147-a7d1-b01b94ff9d35" class="">R is a programming language and environment for statistical computing and graphics. This means that R can be used to do a variety of statistical analyses. You can also use R to graphically represent  your data and manipulate your data.</p><h3 id="5afaebe7-7175-4c22-abf9-6905771b75d5" class="">Why learn how to use R? </h3><p id="073bfbd1-d051-422f-81c5-dd53c393e516" class="">It is free and widely used in the life sciences (as well as in other fields such as Data Science) </p><p id="32ecec8a-b8ee-448f-8244-7baba76099c4" class="">It can be much faster and more streamlined than using other tools such as Excel and GraphPad</p><p id="fd7daa5c-8667-42dd-951c-fa8f82189083" class="">It allows for more reproducible analyses</p><p id="e6c1cc2a-759e-4cb8-9937-17c28264ac8c" class="">It is much more flexible than other tools </p><p id="093fb642-f7e2-4670-91e4-b5877b03c509" class="">It is open-sourced, people are constantly producing new tools and improving on old ones </p><p id="b59c9dad-b776-4f68-9b47-15d9aa3487db" class="">
+</p><p id="885e81cd-9df4-4658-a9ad-e2640bf25781" class="">Nonetheless, learning R can be time-consuming and overwhelming. Below are some helpful tutorials and resources. </p><h1 id="7a804bbe-ffad-4689-a9dd-efbbe9098bf3" class="">Getting Started </h1><p id="e0a938ea-b2ae-4f32-9ca1-24e37c2baa06" class=""><span style="border-bottom:0.05em solid">Download R and RStudio </span></p><ul id="49e5cd0b-c5ca-4b72-84cd-55535271f932" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.r-project.org/">https://www.r-project.org/</a> </li></ul><ul id="d238f601-9ffd-4da1-a2b6-a002c8af40cd" class="bulleted-list"><li style="list-style-type:disc"><a href="https://rstudio.com/">https://rstudio.com/</a> </li></ul><p id="7b694280-3476-4174-a180-b9dfee4eed25" class=""><span style="border-bottom:0.05em solid">Basic R Tutorials</span></p><figure id="9752e4ee-88b2-47e2-97c4-981a3f2de7d0"><a href="https://github.com/z3tt/ggplot-courses" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">GitHub - z3tt/ggplot-courses: 👨‍🏫 ggplot2 Teaching Material</div><div class="bookmark-description">Collection of personal material and additional resources for the R package {ggplot2} .</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/z3tt/ggplot-courses</div></div><img src="https://opengraph.githubassets.com/b60e1a175d5ec5d71c576422667cee71d968ffbb6de1c918e0b7232913ce4fdb/z3tt/ggplot-courses" class="bookmark-image"/></a></figure><figure id="a001ed13-785c-4725-ae94-398e351c79bc"><div class="source"><a href="RStudio%20Basics%20a001ed13785c4725ae94398e351c79bc/RforBeginners_Paradis.pdf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6617d09b-1199-4822-972a-6be86c43453e/RforBeginners_Paradis.pdf</a></div></figure><figure id="9086ecf7-7d16-4926-a629-f824a2cbe438"><div class="source"><a href="RStudio%20Basics%20a001ed13785c4725ae94398e351c79bc/base-r.pdf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ac16746c-22e6-4872-86bd-a8bf4bf44439/base-r.pdf</a></div></figure><figure id="da848c47-5940-4fe4-a9e4-8e48399c3f28"><div class="source"><a href="RStudio%20Basics%20a001ed13785c4725ae94398e351c79bc/R_ReferenceCard.pdf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/56c3471f-dada-464c-898c-485d67b27dd7/R_ReferenceCard.pdf</a></div></figure><ul id="03cc225b-2480-4a98-b40c-237ac3ad4a12" class="bulleted-list"><li style="list-style-type:disc"><a href="https://rstudio.com/resources/cheatsheets/">https://rstudio.com/resources/cheatsheets/</a> </li></ul><p id="3bb5e3ca-f1db-40f0-a847-a6f3948ac605" class=""><span style="border-bottom:0.05em solid">Packages</span></p><ul id="a835083d-2cd7-44ec-871d-409c48395eba" class="bulleted-list"><li style="list-style-type:disc"><a href="https://cran.r-project.org/">https://cran.r-project.org/</a> </li></ul><p id="1b1acfe5-f359-45da-af2e-3341d71816c1" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="03468611-b2a8-4351-8ef7-f75bf11b0d63"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Below are resources for specific applications. Please feel free to add additional resources or categories that you have found helpful. One of the most time-consuming aspects of learning how to use R is searching for tutorials that are applicable to your needs. The hope is that this compilation of resources will help mitigate those issues. </div></figure><ul id="bb93964d-719f-44b1-a306-89fe9d543016" class="toggle"><li><details open=""><summary>Plotting</summary><p id="519a06ee-59e9-4c8d-9669-1c4673c94c71" class="">The ggplot2 package is amazing for creating visualizations of your data. It is actually pretty straightforward to start using once you familiarize yourself with the basic syntax.</p><ul id="10b8ee10-9477-453a-8994-1bcacd5bb40c" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.r-graph-gallery.com/all-graphs.html">https://www.r-graph-gallery.com/all-graphs.html</a> </li></ul><ul id="d541ef15-2a7c-41e8-baab-9589708b57ad" class="bulleted-list"><li style="list-style-type:disc"><a href="http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html">http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html</a></li></ul><ul id="1bca0165-664b-461f-af90-8248ac5783f5" class="bulleted-list"><li style="list-style-type:disc"><a href="https://ggplot2.tidyverse.org/reference/">https://ggplot2.tidyverse.org/reference/</a></li></ul><ul id="60686934-b7d8-473f-81ba-b24ca61346ba" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.r-graph-gallery.com/">https://www.r-graph-gallery.com/</a> </li></ul><ul id="6061f38c-7dc3-4c9e-a0f0-25d3ee92196a" class="bulleted-list"><li style="list-style-type:disc"><a href="http://sape.inf.usi.ch/quick-reference/ggplot2/colour">http://sape.inf.usi.ch/quick-reference/ggplot2/colour</a></li></ul></details></li></ul><ul id="06ea3d39-5f24-4eb4-8c2e-065fdb7a4177" class="toggle"><li><details open=""><summary>Data Wrangling (aka Cleaning your data tables)</summary><figure id="adf26273-12d3-4c7c-98c4-4f282e4e4d81"><div class="source"><a href="RStudio%20Basics%20a001ed13785c4725ae94398e351c79bc/data-wrangling-cheatsheet.pdf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7cdc2041-e916-426c-bece-eef9a8cc3667/data-wrangling-cheatsheet.pdf</a></div></figure><ul id="feffea9a-213b-4905-b6a3-177f782a78b1" class="bulleted-list"><li style="list-style-type:disc"><a href="https://cengel.github.io/R-data-wrangling/">https://cengel.github.io/R-data-wrangling/</a></li></ul><ul id="7d1e186c-ee5f-402c-9f34-2e2bd7b93be2" class="bulleted-list"><li style="list-style-type:disc"><a href="https://ramnathv.github.io/pycon2014-r/explore/README.html">https://ramnathv.github.io/pycon2014-r/explore/README.html</a></li></ul></details></li></ul><ul id="77ed2ea8-714d-4a34-964e-0c14585d6946" class="toggle"><li><details open=""><summary>RNA-seq Specific Packages and Tutorials</summary><h3 id="f24ac3db-5941-40ea-bad1-9c3eaa399345" class="">Differential Gene Expression Analysis</h3><ul id="4a626dd9-d123-4c0c-8bba-be25ea60a883" class="bulleted-list"><li style="list-style-type:disc"><a href="https://bioconductor.org/packages/release/workflows/vignettes/rnaseqGene/inst/doc/rnaseqGene.html">https://bioconductor.org/packages/release/workflows/vignettes/rnaseqGene/inst/doc/rnaseqGene.html</a></li></ul><h3 id="165345d3-ffd9-4e9e-b64a-77b99705ae0c" class="">Gene-set enrichment analysis (GSEA)</h3><ul id="bcfd3922-f900-4333-baf9-f8fb3eb8e69e" class="bulleted-list"><li style="list-style-type:disc"><a href="https://bioinformatics-core-shared-training.github.io/cruk-summer-school-2018/RNASeq2018/html/06_Gene_set_testing.nb.html">https://bioinformatics-core-shared-training.github.io/cruk-summer-school-2018/RNASeq2018/html/06_Gene_set_testing.nb.html</a></li></ul><ul id="d8801b00-bde7-42c2-9881-9810302b2eae" class="bulleted-list"><li style="list-style-type:disc"><a href="https://stephenturner.github.io/deseq-to-fgsea/">https://stephenturner.github.io/deseq-to-fgsea/</a> </li></ul></details></li></ul><ul id="ce0d46e6-f228-421a-be1f-3061c515333a" class="toggle"><li><details open=""><summary>Statistics</summary><ul id="19503952-82b5-4ba8-a0b5-5eab16422ffa" class="bulleted-list"><li style="list-style-type:disc"><a href="https://bookdown.org/mikemahoney218/LectureBook/basic-statistics-using-r.html">https://bookdown.org/mikemahoney218/LectureBook/basic-statistics-using-r.html</a> </li></ul><ul id="6f2d6566-9110-4746-8c97-11c6d0e16049" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.nature.com/collections/qghhqm/pointsofsignificance">https://www.nature.com/collections/qghhqm/pointsofsignificance</a></li></ul></details></li></ul><ul id="e3474786-5fa9-44a4-93ea-416be1a1de65" class="toggle"><li><details open=""><summary>Making Figures </summary><ul id="396d8070-94d8-42b0-99c3-1237776b0636" class="bulleted-list"><li style="list-style-type:disc">add link here</li></ul></details></li></ul><ul id="1221a279-1f47-4e11-a7ee-dfbd65518539" class="toggle"><li><details open=""><summary>Random other tools/tutorials</summary><ul id="440b6997-28a9-439c-b823-0a0449a447ec" class="bulleted-list"><li style="list-style-type:disc"><a href="https://thatdatatho.com/easily-create-descriptive-summary-statistic-tables-r-studio/">https://thatdatatho.com/easily-create-descriptive-summary-statistic-tables-r-studio/</a> #summary stats tables </li></ul><ul id="6342e91d-4c7a-4b33-a0fe-8c7e4bd0342d" class="bulleted-list"><li style="list-style-type:disc"><a href="http://lenkiefer.com/2018/07/28/text-mining-fedspeak/">http://lenkiefer.com/2018/07/28/text-mining-fedspeak/</a> #text mining</li></ul></details></li></ul></div></article></body></html>
