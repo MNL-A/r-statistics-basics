@@ -1,0 +1,153 @@
+---
+title: "R 101 Tutorial"
+subtitle: "Part 1" 
+author: "Jillybeth Burgado"
+date: "Last Updated: June 2022"
+output: 
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+    code_download: TRUE
+    code_folding: "show"
+  github_document:
+    fig_width: 7
+    fig_height: 5
+    dev: "png"
+  pdf_document:
+    toc: yes
+    toc_depth: 3
+---
+
+# Introduction
+
+The purpose of this tutorial is to introduce you to R/RStudio. We will cover the following topics: 
+
+- Download R/RStudio
+- Setting up your environment
+- Assigning variables
+- Reading in sample data
+
+> A note before getting started: This tutorial is written in RMarkdown (RMD) in order to provide formatted alongside the sample code. You have two option for following along: 1) Download this RMD file, save to your local computer, and write directly in the code blocks below or 2) Open a new R Script, copy-paste the relevant code blocks, and edit as needed.To download the RMD file, click on the top right-hand side where it says "Code". Then click on "Download Rmd". 
+
+# Getting Started 
+
+First, download [R](https://www.r-project.org/) and [RStudio](https://rstudio.com/) 
+
+# Set up your environment
+
+Next, set up your **Project Directory**. This is optional, but I highly recommend making Project Directories for each "project" in order to easily read in your data and save files. You will only have to do this once. Afterwards, you can simply open the project and R files directly. 
+
+1. Make a folder on your local computer where you will save your data, R analysis files, etc. 
+2. Open RStudio
+3. Click on the File -> New Project -> New Directory -> New Project 
+4. Create a Project Name 
+5. Navigate to the folder you created in Step 1 
+6. Click Create Project
+
+From here, you can either save this RMD tutorial file in your recently created Project Directory and open it in RStudio OR you can create a new R script (File -> New File -> R Script) 
+
+# Install and load required packages 
+
+The first step is to install and load required packages. Visit <https://www.datacamp.com/community/tutorials/r-packages-guide> for more information about packages and package repositories. You only need to install packages once - however, you need to keep track of versions and you may need to update packages depending on new releases. 
+
+```{r}
+# The '#' means that the code is commented out and will not run.  
+#install.packages('ggplot2') #how to install
+library(ggplot2) #how to load package
+```
+
+# Running the Code 
+
+You can run a set of lines a few different ways: 1) You can highlight the lines and click Run (top right-hand side of screen) or click <enter> or 2) if you are using this RMarkdown/RNotebook file, you can run the entire chuck of code by clicking the green <play> button.
+
+# Variables and Data Types 
+
+R is a pretty unique language in that it is dynamically typed, meaning that it checks the type of data type when the statement is run/compiled. You can also change a variable's data type. The most common data types are as follows: Vectors, Matrices, Lists, Arrays, DataFrames. Below are examples of how to assign variables and check the data types
+
+Here are some basic Operators: 	
++	addition
+-	subtraction
+*	multiplication
+/	division
+^ or **	exponentiation
+Logical Operators include:
+
+Logical Operators: 
+>	greater than
+>=	greater than or equal to
+==	exactly equal to
+!=	not equal to
+
+```{r}
+#Assigning variables 
+a <- 10
+b <- c(10, 13, 20)
+c <- "A name"
+d <- 10+20
+
+#You can also use = to assign variables
+a = 15
+
+#print output of a variable
+print(a)
+
+#check data type of variable
+class(a)
+class(b)
+class(c)
+class(d)
+is.numeric(a)
+
+#change the data type of a variable
+a <- as.character(a)
+is.character(a)
+```
+
+Now, you give it a try: 
+
+- Make 2 variables below, a numeric variable and a character variable
+- Check the data types of these variables
+- Subtract two numeric variables and assign the answer to a new variable
+
+```{r}
+
+```
+
+# Read in example Data
+
+We will now read in a csv file with some example data. Since we created a Project Directory, you can save the csv file in this Directory and read it into R simply using the file name. The file should also show up on the bottom right-hand side of your RStudio screen. The data will be stored as a dataframe and will be named *data*.
+
+This example data is from a recording of neuronal activity from neurons that were isolated from the mouse brain and plated on a dish with many electrodes. The exact details of the experiment are not super important right now. 
+
+This example data frame contains 4 columns (variables): 
+
+1. Well - this is a sample ID for the experiment
+2. Day - the "age" of the cells 
+3. Spike Number - the number of spikes in a 5minute recording window - this is our dependent variable
+4. Mean Firing Rate - the rate of firing in hertz - this is another dependent variable 
+
+
+```{r}
+data <- read.csv("ExampleNeuralData.csv", header = TRUE)
+
+#open your dataframe in a separate tab
+View(data)
+
+#print the top few rows of your dataframe
+head(data)
+
+#select a specific column of the dataframe
+data$SpikeNumber
+data$Well
+
+```
+
+**Question** How would you check the type of this dataframe as whole? How do you check the data type of each column individually? Please write code below: 
+
+```{r}
+
+```
+
+
+
