@@ -1,7 +1,7 @@
 # R and Statistics: The Basics
 
 ## Introduction
-
+View in Web Browser https://mnl-a.github.io/r-statistics-basics/ 
 ## Getting Started
 
 ## In-house tutorials/notes
