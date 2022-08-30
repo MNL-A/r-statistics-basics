@@ -21,9 +21,10 @@ View in Web Browser https://mnl-a.github.io/r-statistics-basics/
 
 [Cheatsheet 2](https://www.guru99.com/linux-commands-cheat-sheet.html)
 
-### R Studio
+### R/RStudio
 
 [Cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
+[Data Manipulation Tutorial from Data Carpentry ](https://datacarpentry.org/R-ecology-lesson/03-dplyr.html)
 
 ### Markdown
 
